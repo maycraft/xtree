@@ -8,10 +8,6 @@ const arrow = document.querySelector('.arrow');
 const burmenu = document.querySelector('.burmenu');
 const menu = document.querySelector('.menu');
 const modalButtons = document.querySelectorAll('.js-modal-button');
-<<<<<<< HEAD
-=======
-const callbackModal = document.getElementById('callback__modal');
->>>>>>> ab5d469792c6713c25ade73fed1fd907d1ae52b1
 const modalCloseButtons = document.querySelectorAll('.modal__close');
 
 //Получение прайса
