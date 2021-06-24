@@ -43,10 +43,6 @@ body.open-modal {
     display: none;
 }
 
-.show {
-    display: flex !important;
-}
-
 h1 {
     font-size: 55px;
     font-weight: bold;
@@ -227,6 +223,10 @@ nav {
         -ms-flex-pack: justify;
             justify-content: space-between;
     transition: height .5s ease;
+}
+
+.menu.show {
+    display: flex;
 }
 
 .menu__item a {
@@ -788,12 +788,9 @@ a.btn {
 
 .modal {
     display: none;
-    /* justify-content: center;
-    align-items: center; */
-    /* filter: blur(5px); */
 }
 
-.modal-active {
+.modal.active {
     display: block;
 }
 
@@ -807,7 +804,7 @@ a.btn {
     background: rgba(0, 0, 0, 0.9);
 }
 
-.callback__form {
+.modal__content {
     z-index: 1000;
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -822,11 +819,11 @@ a.btn {
     transition: margin .8s;
 }
 
-.callback__form.show-up {
+.modal__content.show-up {
     margin-top: 70px;
 }
 
-.callback__close {
+.modal__close {
     position: absolute;
     top: 5px;
     right: 10px;
@@ -837,23 +834,23 @@ a.btn {
     transition: transform .7s ;
 }
 
-.callback__close:hover {
+.modal__close:hover {
     transform: rotate(360deg);
 }
 
-.callback__form h5 {
+.modal__content h5 {
     color: #3a8e07;
 }
 
-.callback__form form {
+.modal__content form {
     margin-top: 10px;
 }
 
-.callback__form button{
+.modal__content button{
     width: 100%;
 }
 
-.callback__form input {
+.modal__content input {
     margin-bottom: 10px;
 }
 
@@ -865,11 +862,11 @@ a.btn {
 @media screen and ( max-width: 1200px ){
     
     h1 {
-        font-size: 45px;
+        font-size: 35px;
     }
     
     h2 {
-        font-size: 40px;
+        font-size: 30px;
     }
     
     .head__order {
@@ -1007,10 +1004,6 @@ a.btn {
             margin-top: 40px;
         }
 
-        .callback__btn {
-            display: none;
-        }
-
         .customer__word-hide{
             display: none;
         }
@@ -1043,6 +1036,11 @@ a.btn {
         
         .burmenu {
             display: inline-block;
+        }
+
+        .callback__btn {
+            display: none;
+            left: 25px;
         }
         
         .menu {

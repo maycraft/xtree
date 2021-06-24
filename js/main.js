@@ -7,10 +7,9 @@ const linksMenu = document.querySelectorAll('.menu a');
 const arrow = document.querySelector('.arrow');
 const burmenu = document.querySelector('.burmenu');
 const menu = document.querySelector('.menu');
-const callbackBtn = document.querySelector('.callback__btn');
+const modalButtons = document.querySelectorAll('.js-modal-button');
 const callbackModal = document.getElementById('callback__modal');
-const callbackForm = document.querySelector('.callback__form');
-const callbackClose = document.querySelector('.callback__close');
+const modalCloseButtons = document.querySelectorAll('.modal__close');
 
 //Получение прайса
 priceForm.addEventListener( 'submit', event => {
@@ -53,7 +52,6 @@ burmenu.addEventListener( 'click', (event) => {
     event.preventDefault();
     if( !menu.classList.contains('show') ){
         menu.classList.add('show');
-        menu.style.height = 'auto';
         let height = menu.clientHeight + 'px';
         menu.style.height = '0px';
 
@@ -69,32 +67,41 @@ burmenu.addEventListener( 'click', (event) => {
     }
 });
 
-//вызов формы обратного вызова
-callbackBtn.addEventListener( 'click', event => {
-    event.preventDefault();
-    body.classList.add('modal-open');
-    callbackModal.classList.add('modal-active');
-    setTimeout(() => {
-        callbackForm.classList.add('show-up');
-    }, 0);
+//вызов модального окна
+modalButtons.forEach( button => {
+    button.addEventListener( 'click', event => {
+        event.preventDefault();
+        body.classList.add('modal-open');
+        const modalId = button.dataset.modal;
+        const modal = document.querySelector(`div[data-id="${modalId}"]`);
+        modal.classList.add('active');
+        const modalContent = modal.querySelector('.modal__content');
+        setTimeout(() => {
+            modalContent.classList.add('show-up');
+        }, 0);
+    })
 })
 
-callbackClose.addEventListener( 'click', event => {
-    event.preventDefault();
-    callbackForm.classList.remove('show-up');
-    callbackForm.addEventListener( 'transitionend', () => {
+function closeModal(modal) {
+    const modalContent = modal.querySelector('.modal__content');
+    modalContent.classList.remove('show-up');
+    modalContent.addEventListener( 'transitionend', () => {
         body.classList.remove('modal-open');
-        callbackModal.classList.remove('modal-active');
+        modal.classList.remove('active');
     }, { once: true } )
+}
+
+modalCloseButtons.forEach( button => {
+    button.addEventListener('click', event => {
+        const modal = button.closest('.modal');
+        event.preventDefault();
+        closeModal(modal);
+    })
 })
 
 document.addEventListener( 'click', ({target}) => {
     if(target.classList.contains('overlay')){
-        callbackForm.classList.remove('show-up');
-        callbackForm.addEventListener( 'transitionend', () => {
-            body.classList.remove('modal-open');
-            callbackModal.classList.remove('modal-active');
-        }, { once: true } )
+        closeModal(target);
     }
 })
 
