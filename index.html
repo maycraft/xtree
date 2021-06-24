@@ -44,7 +44,7 @@
                             <div class="col-md col-lg-3">
                                 <div class="head__order">
                                     <a class="d-block head__email" href="mailto:info@elockagori.ru">info@elockagori.ru</a>
-                                    <button class="btn btn__head btn_red" data-toggle="modal" data-target="#recallModal">заказать звонок</button>
+                                    <button class="btn btn__head btn_red js-modal-button" data-modal="2">заказать звонок</button>
                                 </div>
                             </div>
                         </div>
@@ -767,7 +767,7 @@
                 </div>
             </footer>
             <div class="arrow"><i class="fas fa-arrow-up fa-3x"></i></div>
-            <div class="callback__btn">
+            <div class="callback__btn js-modal-button" data-modal="1">
                 <div class="callback__text">
                     <i class="fa fa-phone-alt" aria-hidden="true"></i>
                     <span>Заказать<br />звонок</span>
@@ -775,9 +775,11 @@
             </div>
         </div>
         <!-- Modal 1-->>
-        <div id="callback__modal" class="modal overlay" role="dialog" tabindex="-1" aria-hidden="true">
-            <div class="callback__form">
-                <span class="callback__close"><i class="fas fa-times fa-2x"></i></span>
+        <div class="modal overlay" data-id="1" role="dialog" tabindex="-1" aria-hidden="true">
+            <div class="modal__content">
+                <span class="modal__close" role="button" tabindex="0" aria-label="Close">
+                    <i class="fas fa-times fa-2x"></i>
+                </span>
                 <p class="modal__title">Перезвоним через 30 сек</p>
                 <form>
                     <input type="text" name="user" placeholder="Ваше имя" required />
@@ -789,22 +791,18 @@
             </div>
         </div>
         <!-- Modal 2-->
-        <div class="modal fade" id="recallModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal__body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i class="fas fa-times"></i></button
-                        ><br />
-                        <p class="modal__title">Оставьте ваш номер <br />и я перезвоню вам</p>
-                        <form class="modal__form">
-                            <input type="text" class="user" name="user" placeholder="Ваше имя" required />
-                            <input type="text" class="phone" name="phone" placeholder="Ваш телефон" required />
-                            <button type="submit" class="btn btn_red">Заказать звонок</button>
-                        </form>
-                        <div class="result"></div>
-                    </div>
-                </div>
+        <div class="modal overlay" tabindex="-1" role="dialog" aria-hidden="true" data-id="2">
+            <div class="modal__content">
+                <span class="modal__close" role="button" tabindex="0" aria-label="Close">
+                    <i class="fas fa-times fa-2x"></i>
+                </span>
+                <p class="modal__title">Оставьте ваш номер <br />и я перезвоню вам</p>
+                <form class="modal__form">
+                    <input type="text" class="user" name="user" placeholder="Ваше имя" required />
+                    <input type="text" class="phone" name="phone" placeholder="Ваш телефон" required />
+                    <button type="submit" class="btn btn_red">Заказать звонок</button>
+                </form>
+                <div class="result"></div>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
